@@ -107,6 +107,4 @@ Located at `src/main/resources/application.properties`:
 
 ---
 
-## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
