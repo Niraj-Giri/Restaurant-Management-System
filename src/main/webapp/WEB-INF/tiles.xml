@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="base.definition" template="/WEB-INF/layouts/default-layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/layouts/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp"/>
+    </definition>
+
+    <definition name="owner.base.definition" extends="base.definition">
+        <put-attribute name="header" value="/WEB-INF/layouts/owner-header.jsp"/>
+    </definition>
+    <definition name="admin.base.definition" extends="base.definition">
+        <put-attribute name="header" value="/WEB-INF/layouts/admin-header.jsp"/>
+    </definition>
+
+
+    <definition name="staff.base.definition" extends="base.definition">
+        <put-attribute name="header" value="/WEB-INF/layouts/staff-header.jsp"/>
+    </definition>
+
+    <definition name="home" extends="base.definition">
+        <put-attribute name="title" value="Home - FoodApp"/>
+        <put-attribute name="body" value="/WEB-INF/views/home.jsp"/>
+    </definition>
+    <definition name="cart" extends="base.definition">
+        <put-attribute name="title" value=" page cart"/>
+        <put-attribute name="body" value="/WEB-INF/views/cart.jsp"/>
+    </definition>
+    <definition name="orders" extends="base.definition">
+        <put-attribute name="title" value=" page ordres"/>
+        <put-attribute name="body" value="/WEB-INF/views/orders.jsp"/>
+    </definition>
+    <definition name="order-details" extends="base.definition">
+        <put-attribute name="title" value="Home - FoodApp"/>
+        <put-attribute name="body" value="/WEB-INF/views/orderDetails.jsp"/>
+    </definition>
+
+
+    <definition name="menu" extends="base.definition">
+        <put-attribute name="body" value="/WEB-INF/views/restaurant-menu.jsp" />
+    </definition>
+
+    <definition name="owner-home" extends="owner.base.definition">
+        <put-attribute name="title" value="Owner Dashboard"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-home.jsp"/>
+    </definition>
+
+    <definition name="owner-login" extends="base.definition">
+        <put-attribute name="title" value="Owner Login" />
+        <put-attribute name="body" value="/WEB-INF/views/owner-login.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layouts/empty.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/empty.jsp" />
+    </definition>
+    <definition name="owner-register" extends="base.definition">
+        <put-attribute name="title" value="Owner register" />
+        <put-attribute name="body" value="/WEB-INF/views/owner-register.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layouts/empty.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/empty.jsp" />
+    </definition>
+
+    <definition name="owner-today-orders" extends="owner.base.definition">
+        <put-attribute name="title" value="Today's Orders"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-today-orders.jsp"/>
+    </definition>
+
+    <definition name="owner-past-orders" extends="owner.base.definition">
+        <put-attribute name="title" value="Order History"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-past-orders.jsp"/>
+    </definition>
+
+    <definition name="owner-add-staff" extends="owner.base.definition">
+        <put-attribute name="title" value="add staff"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-add-staff.jsp"/>
+    </definition>
+    <definition name="owner-order-details" extends="owner.base.definition">
+        <put-attribute name="title" value="Order details"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-order-details.jsp"/>
+    </definition>
+    <definition name="owner-add-restaurant" extends="owner.base.definition">
+        <put-attribute name="title" value="add restaurant"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-add-restaurant.jsp"/>
+    </definition>
+    <definition name="owner-add-menu" extends="owner.base.definition">
+        <put-attribute name="title" value="owner add menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-addmenu.jsp"/>
+    </definition>
+    <definition name="owner-block-user" extends="owner.base.definition">
+        <put-attribute name="title" value="owner block user"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-block-user.jsp"/>
+    </definition>
+    <definition name="owner-selection" template="/WEB-INF/views/owner-selection.jsp">
+    </definition>
+
+    <definition name="owner-manage-menu" extends="owner.base.definition">
+        <put-attribute name="title" value="owner manage menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-manage-menu.jsp"/>
+    </definition>
+    <definition name="owner-manage-restaurant" extends="owner.base.definition">
+        <put-attribute name="title" value=" owner manage restaurant"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-manage-restaurant.jsp"/>
+    </definition>
+
+    <definition name="owner-manage-staff" extends="owner.base.definition">
+        <put-attribute name="title" value=" owner manage staff"/>
+        <put-attribute name="body" value="/WEB-INF/views/owner-manage-staff.jsp"/>
+    </definition>
+
+
+
+    <definition name="staff-assigned-orders" extends="staff.base.definition">
+        <put-attribute name="title" value="Assigned orders"/>
+        <put-attribute name="body" value="/WEB-INF/views/staff-assigned-orders.jsp"/>
+    </definition>
+
+
+
+
+    <definition name="staff-delivered-orders" extends="staff.base.definition">
+        <put-attribute name="title" value="Delivered orders"/>
+        <put-attribute name="body" value="/WEB-INF/views/staff-delivered-orders.jsp"/>
+    </definition>
+    <definition name="staff-order-details" extends="staff.base.definition">
+        <put-attribute name="title" value="staff order details"/>
+        <put-attribute name="body" value="/WEB-INF/views/staff-order-details.jsp"/>
+    </definition>
+
+    <definition name="admin-block-user" extends="admin.base.definition">
+        <put-attribute name="title" value="owner block user"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-block-user.jsp"/>
+    </definition>
+    <definition name="admin-add-user" extends="admin.base.definition">
+        <put-attribute name="title" value="owner add user"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-add-user.jsp"/>
+    </definition>
+    <definition name="admin-add-menu" extends="admin.base.definition">
+        <put-attribute name="title" value="admin add menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-add-menu.jsp"/>
+    </definition>
+    <definition name="admin-add-restaurant" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin add restaurant"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-add-restaurant.jsp"/>
+    </definition>
+    <definition name="admin-add-coupon" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin add coupon"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-add-coupon.jsp"/>
+    </definition>
+    <definition name="admin-manage-restaurant" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin manage restaurant"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-manage-restaurant.jsp"/>
+    </definition>
+    <definition name="admin-manage-menu" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin manage menu"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-manage-menu.jsp"/>
+    </definition>
+
+    <definition name="admin-manage-user" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin manage user"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-manage-user.jsp"/>
+    </definition>
+    <definition name="admin-manage-coupon" extends="admin.base.definition">
+        <put-attribute name="title" value=" admin manage coupon"/>
+        <put-attribute name="body" value="/WEB-INF/views/admin-manage-coupon.jsp"/>
+    </definition>
+
+</tiles-definitions>

@@ -1,0 +1,64 @@
+/* General Layout Adjustments */
+body {
+    background-color: #f8f9fa; /* Light grey background for better contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Enhancing the Restaurant Cards */
+.restaurant-tile {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.restaurant-tile:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Ensuring text is visible and black (Fixes your blank text issue) */
+.card-title {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: #5d6d7e;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Spinner and Loading State */
+#restaurant-tile-grid .spinner-border {
+    color: #007bff;
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Header styling */
+h2 {
+    color: #343a40;
+    padding-top: 20px;
+    font-weight: 800;
+}
+
+hr {
+    border-top: 3px solid #007bff;
+    width: 60px;
+    margin-left: 0;
+}
