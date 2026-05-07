@@ -57,6 +57,10 @@
                     <span id="cart-count" style="display:none;">0</span>
                 </a>
 
+                <button class="btn btn-outline-secondary rounded-circle me-3" id="theme-toggle" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
                 <button class="btn btn-primary rounded-pill px-4 guest-only fw-bold" data-bs-toggle="modal" data-bs-target="#authModal">
                     Login
                 </button>
@@ -157,8 +161,28 @@
         checkAuthState();
         updateCartUI();
 
-        // REMOVE THIS LINE: completeLoginFlow();
-        // It should only be triggered by the Login AJAX success callback.
+        // Dark Mode Initialization
+        const savedTheme = localStorage.getItem('app-theme') || 'light';
+        $('#html-root').attr('data-bs-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        $('#theme-toggle').click(function() {
+            const currentTheme = $('#html-root').attr('data-bs-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            $('#html-root').attr('data-bs-theme', newTheme);
+            localStorage.setItem('app-theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                $('#theme-toggle').html('<i class="fa-solid fa-sun text-warning"></i>');
+                $('.navbar-premium').css('background', '#212529').css('border-bottom', '2px solid #343a40');
+            } else {
+                $('#theme-toggle').html('<i class="fa-solid fa-moon"></i>');
+                $('.navbar-premium').css('background', '#ffffff').css('border-bottom', '2px solid #f1f5f9');
+            }
+        }
     });
 
     // --- 2. Authentication UI Logic ---

@@ -8,7 +8,8 @@
 
     body {
         background-color: var(--bg-light);
-        padding-left: var(--sidebar-width); /* Pushes content to the right */
+        padding-left: var(--sidebar-width);
+        /* Pushes content to the right */
         transition: padding 0.3s ease;
     }
 
@@ -112,13 +113,22 @@
     }
 
     @media (max-width: 992px) {
-        body { padding-left: 0; }
+        body {
+            padding-left: 0;
+        }
+
         .sidebar-owner {
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
-        .sidebar-owner.active { transform: translateX(0); }
-        .mobile-nav-toggle { display: block; }
+
+        .sidebar-owner.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-toggle {
+            display: block;
+        }
     }
 </style>
 
@@ -160,21 +170,21 @@
                     <i class="fa-solid fa-store"></i> Manage restaurants
                 </a>
             </li>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link nav-link-owner" href="/owner/add-restaurant">--%>
-<%--                    <i class="fa-solid fa-store"></i> Add resturant--%>
-<%--                </a>--%>
-<%--            </li>--%>
-            <li class="nav-item">
-                <a class="nav-link nav-link-owner" href="/owner/manage-menu">
-                    <i class="fa-solid fa-list-check"></i> Manage Menu
-                </a>
-            </li>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link nav-link-owner" href="/owner/addmenu">--%>
-<%--                    <i class="fa-solid fa-bowl-food"></i> Add Menu Item--%>
-<%--                </a>--%>
-<%--            </li>--%>
+            <%-- <li class="nav-item">--%>
+                <%-- <a class="nav-link nav-link-owner" href="/owner/add-restaurant">--%>
+                    <%-- <i class="fa-solid fa-store"></i> Add resturant--%>
+                        <%-- </a>--%>
+                            <%-- </li>--%>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-owner" href="/owner/manage-menu">
+                                        <i class="fa-solid fa-list-check"></i> Manage Menu
+                                    </a>
+                                </li>
+                                <%-- <li class="nav-item">--%>
+                                    <%-- <a class="nav-link nav-link-owner" href="/owner/addmenu">--%>
+                                        <%-- <i class="fa-solid fa-bowl-food"></i> Add Menu Item--%>
+                                            <%-- </a>--%>
+                                                <%-- </li>--%>
         </ul>
 
         <div class="nav-section-label">People & Access</div>
@@ -184,29 +194,33 @@
                     <i class="fa-solid fa-users-gear"></i> Manage Staff
                 </a>
             </li>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link nav-link-owner" href="/owner/add-staff">--%>
-<%--                    <i class="fa-solid fa-user-plus"></i> Register Staff--%>
-<%--                </a>--%>
-<%--            </li>--%>
-            <li class="nav-item">
-                <a class="nav-link nav-link-owner" href="/owner/block-user">
-                    <i class="fa-solid fa-user-slash"></i> User block
-                </a>
-            </li>
+            <%-- <li class="nav-item">--%>
+                <%-- <a class="nav-link nav-link-owner" href="/owner/add-staff">--%>
+                    <%-- <i class="fa-solid fa-user-plus"></i> Register Staff--%>
+                        <%-- </a>--%>
+                            <%-- </li>--%>
+                                <li class="nav-item">
+                                    <a class="nav-link nav-link-owner" href="/owner/block-user">
+                                        <i class="fa-solid fa-user-slash"></i> User block
+                                    </a>
+                                </li>
         </ul>
     </div>
 
     <div class="sidebar-footer">
         <div class="dropdown">
-            <button class="btn btn-light w-100 border rounded-pill py-2 px-3 dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+            <button class="btn btn-light w-100 border rounded-pill py-2 px-3 dropdown-toggle d-flex align-items-center"
+                type="button" data-bs-toggle="dropdown">
                 <span class="owner-indicator"></span>
                 <span id="owner-email-display" class="small fw-bold text-truncate">Account</span>
             </button>
             <ul class="dropdown-menu shadow border-0 rounded-4 p-2 mb-2 w-100">
-                <li><hr class="dropdown-divider"></li>
                 <li>
-                    <button class="dropdown-item py-2 text-danger fw-bold rounded-3" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <button class="dropdown-item py-2 text-danger fw-bold rounded-3" data-bs-toggle="modal"
+                        data-bs-target="#logoutModal">
                         <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
                     </button>
                 </li>
@@ -223,8 +237,10 @@
                 <h5 class="fw-bold">Logging Out?</h5>
                 <p class="text-muted small">You will need to login again to manage your branches.</p>
                 <div class="d-flex gap-2 mt-4">
-                    <button type="button" class="btn btn-light w-100 rounded-pill fw-bold" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger w-100 rounded-pill fw-bold" onclick="executeLogout()">Logout</button>
+                    <button type="button" class="btn btn-light w-100 rounded-pill fw-bold"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger w-100 rounded-pill fw-bold"
+                        onclick="executeLogout()">Logout</button>
                 </div>
             </div>
         </div>
@@ -235,7 +251,7 @@
 <script src="${pageContext.request.contextPath}/js/ring_sounds.js"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 1. Global Security Check
         const role = localStorage.getItem('role');
         const token = localStorage.getItem('token');
@@ -268,7 +284,7 @@
             $.ajax({
                 url: '/api/restaurants/add',
                 type: 'POST',
-                headers: {'Authorization': 'Bearer ' + token},
+                headers: { 'Authorization': 'Bearer ' + token },
                 contentType: 'application/json',
                 data: JSON.stringify(payload),
                 success: function (response) {
@@ -312,7 +328,7 @@
                     $('#owner-email-display').text(localStorage.getItem('userEmail') || 'Owner');
                     if (res.id) connect(res.id);
                 },
-                error: function(xhr) {
+                error: function (xhr) {
                     if (xhr.status === 401 || xhr.status === 403) {
                         window.location.href = '${pageContext.request.contextPath}/owner/login';
                     }
@@ -325,7 +341,7 @@
                 url: '${pageContext.request.contextPath}/api/restaurants/my-all-restaurants',
                 type: 'GET',
                 headers: { 'Authorization': 'Bearer ' + token },
-                success: function(restaurants) {
+                success: function (restaurants) {
                     if (!restaurants || restaurants.length === 0) {
                         // NEW OWNER: No restaurants exist yet. Go to Add page.
                         if (path !== '${pageContext.request.contextPath}/owner/add-restaurant') {
@@ -345,7 +361,7 @@
     function highlightActiveLink() {
         const path = window.location.pathname;
         $('.nav-link-owner').removeClass('active');
-        $('.nav-link-owner').each(function() {
+        $('.nav-link-owner').each(function () {
             if ($(this).attr('href') === path) {
                 $(this).addClass('active');
             }
@@ -405,11 +421,10 @@
 
     function highlightActiveLink() {
         const path = window.location.pathname;
-        $('.nav-link-owner').each(function() {
+        $('.nav-link-owner').each(function () {
             if ($(this).attr('href') === path) {
                 $(this).addClass('active');
             }
         });
     }
 </script>
- 	
