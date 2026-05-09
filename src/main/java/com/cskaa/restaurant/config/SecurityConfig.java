@@ -86,7 +86,7 @@ public class SecurityConfig {
                 .antMatchers("/api/orders/**").hasAnyRole("CUSTOMER", "RESTAURANT_OWNER", "RESTAURANT_STAFF")
                 // jsp pages
                 .antMatchers("/owner/**", "/staff/**", "/admin/**").permitAll()
-                .antMatchers("/", "/home", "/cart", "/menu", "/orders", "/orderDetails", "/login", "/register")
+                .antMatchers("/", "/home", "/about", "/contact", "/cart", "/menu", "/orders", "/orderDetails", "/login", "/register")
                 .permitAll()
                 //
 

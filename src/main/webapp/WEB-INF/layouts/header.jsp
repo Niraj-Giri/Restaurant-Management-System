@@ -48,6 +48,8 @@
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link nav-link-custom" href="/home">Home</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="/about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-custom" href="/contact">Contact Us</a></li>
                 <li class="nav-item user-only" style="display:none;"><a class="nav-link nav-link-custom" href="/orders">My Orders</a></li>
             </ul>
 

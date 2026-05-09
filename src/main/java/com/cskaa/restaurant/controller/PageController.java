@@ -30,6 +30,16 @@ public class PageController {
     public String menuPage() {
         return "menu"; // This must match the <definition name="menu" ...> in your tiles.xml
     }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contactPage() {
+        return "contact";
+    }
     // Loads the owner dashboard (Only for Restaurant Owners)
     @GetMapping("/owner/dashboard")
     public String ownerDashboard() {
