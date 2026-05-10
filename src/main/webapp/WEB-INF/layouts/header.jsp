@@ -361,7 +361,9 @@
 
         // --- REFRESH THE PAGE ---
         // This will re-run $(document).ready, which calls fetchCart() and checkLoginState()
-        // 500ms delay allows the user to see the "Success" toast or modal closing
+        setTimeout(() => {
+            location.reload();
+        }, 500); // 500ms delay allows the user to see the "Success" toast or modal closing
     }
     function showSuccessToast(message) {
         $('#toastMessage').text(message);

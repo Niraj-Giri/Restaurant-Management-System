@@ -36,6 +36,9 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     public AuthController(AuthenticationManager authenticationManager,
                           JwtService jwtService) {
         this.authenticationManager = authenticationManager;
@@ -43,11 +46,13 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user,Authentication authentication) {
+    public ResponseEntity<?> register(@RequestBody User user, Authentication authentication) {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new UserAlreadyExistsException("An account with this email already exists!");
         }
-        if (user.getRole() == Role.ADMIN ) {
+
+        // Only ADMINs can register roles other than CUSTOMER
+        if (user.getRole() != Role.CUSTOMER) {
             boolean isRequestorAdmin = authentication != null && authentication.getAuthorities().stream()
                     .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
 
@@ -56,7 +61,8 @@ public class AuthController {
                         .body(java.util.Map.of("message", "Access Denied: Only Admins can register these roles."));
             }
         }
-        user.setPassword(user.getPassword());
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
         return ResponseEntity.ok(Collections.singletonMap("message", "Registration successful!"));

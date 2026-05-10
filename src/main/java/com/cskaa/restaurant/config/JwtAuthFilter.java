@@ -75,17 +75,20 @@ public class JwtAuthFilter extends GenericFilter {
             //Clear expired token cookie for better UX
            
             sendJsonError((HttpServletResponse)response, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
+            return;
             
         } catch (JwtInvalidException e) {
             //Clear invalid token cookie (security best practice)
            
             sendJsonError((HttpServletResponse)response, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
+            return;
             
         } catch (Exception e) {
             //Generic auth failure (don't leak stack traces)
           
             sendJsonError((HttpServletResponse)response, HttpServletResponse.SC_UNAUTHORIZED, 
                 "Authentication failed. Please log in again.");
+            return;
         }
         
         chain.doFilter(request, response);

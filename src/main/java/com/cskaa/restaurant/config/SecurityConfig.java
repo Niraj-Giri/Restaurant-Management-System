@@ -33,25 +33,9 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
-    /*
-     * @Bean
-     * public PasswordEncoder passwordEncoder() {
-     * return new BCryptPasswordEncoder();
-     * }
-     */
-
-    /*
-     * @Bean
-     * public AuthenticationProvider authenticationProvider() {
-     * DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-     * provider.setUserDetailsService(userDetailsService);
-     * provider.setPasswordEncoder(passwordEncoder());
-     * return provider;
-     * }
-     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
@@ -60,35 +44,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        /*
-         * http.csrf().disable()
-         * .authorizeHttpRequests(auth -> auth
-         * .antMatchers("/admin/**").hasAnyRole("ADMIN","RESTAURANT_OWNER")
-         * .anyRequest().authenticated()
-         * )
-         * .httpBasic();
-         */
-
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
 
                 .antMatchers("/order-websocket/**").permitAll()
-                .antMatchers("/js/**", "/csss/**").permitAll()
+                .antMatchers("/js/**", "/css/**").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/cart/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/restaurants/**").permitAll()
                 .antMatchers("/api/restaurants/register-owner/**").permitAll()
                 .antMatchers("/owner/login", "/owner/register").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN", "RESTAURANT_OWNER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/owner/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
                 .antMatchers("/api/staff/**").hasRole("RESTAURANT_STAFF")
                 .antMatchers("/api/orders/**").hasAnyRole("CUSTOMER", "RESTAURANT_OWNER", "RESTAURANT_STAFF")
                 // jsp pages
-                .antMatchers("/owner/**", "/staff/**", "/admin/**").permitAll()
                 .antMatchers("/", "/home", "/about", "/contact", "/cart", "/menu", "/orders", "/orderDetails", "/login", "/register")
                 .permitAll()
-                //
 
                 .anyRequest().authenticated()
                 .and()
